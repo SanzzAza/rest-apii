@@ -53,11 +53,11 @@ function httpsJsonRequest(url, { method = 'GET', headers = {}, body } = {}) {
 
 async function fetchFromRapidApi(inputUrl) {
   const rapidKey = process.env.RAPIDAPI_KEY;
-  const rapidHost = process.env.RAPIDAPI_HOST;
+  const rapidHost = process.env.RAPIDAPI_HOST || 'social-media-video-downloader.p.rapidapi.com';
   const rapidPath = process.env.RAPIDAPI_PATH || '/';
 
   if (!rapidKey || !rapidHost) {
-    throw new Error('RAPIDAPI_KEY / RAPIDAPI_HOST belum diset di environment.');
+    throw new Error('RAPIDAPI_KEY belum diset di environment.');
   }
 
   const endpoint = new URL(`https://${rapidHost}${rapidPath}`);
@@ -99,7 +99,7 @@ async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return send(res, 204, '', 'text/plain; charset=utf-8');
   if (req.method === 'GET' && u.pathname === '/') return send(res, 200, renderPage(`${proto}://${host}`), 'text/html; charset=utf-8');
-  if (req.method === 'GET' && u.pathname === '/docs') return sendJson(res, 200, { endpoint: 'POST /api/tiktok', source: 'RapidAPI', env: ['RAPIDAPI_KEY', 'RAPIDAPI_HOST', 'RAPIDAPI_PATH(optional)'] });
+  if (req.method === 'GET' && u.pathname === '/docs') return sendJson(res, 200, { endpoint: 'POST /api/tiktok', source: 'RapidAPI', default_host: 'social-media-video-downloader.p.rapidapi.com', env: ['RAPIDAPI_KEY', 'RAPIDAPI_HOST(optional)', 'RAPIDAPI_PATH(optional)'] });
 
   if (req.method === 'POST' && u.pathname === '/api/tiktok') {
     try {

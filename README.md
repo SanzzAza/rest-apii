@@ -13,8 +13,8 @@ npm start
 ## Vercel env
 Set di Vercel Project Settings -> Environment Variables:
 - `RAPIDAPI_KEY`
-- `RAPIDAPI_HOST`
-- `RAPIDAPI_PATH` (opsional, default `/`)
+- `RAPIDAPI_HOST` (opsional, default: `social-media-video-downloader.p.rapidapi.com`)
+- `RAPIDAPI_PATH` (opsional, default `/`, untuk host ini biasanya `/v1/social/autolink`)
 
 ## Routes
 - `GET /`
