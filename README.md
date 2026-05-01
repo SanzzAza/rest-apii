@@ -1,27 +1,22 @@
 # rest-apii
 
-REST API TikTok oEmbed + landing page, siap deploy ke Vercel.
+REST API TikTok downloader style + landing page, deploy-ready untuk Vercel.
 
 ## Local run
 
 ```bash
+cp .env.example .env
+# isi RAPIDAPI_KEY dan RAPIDAPI_HOST
 npm start
 ```
 
-## Deploy ke Vercel
-
-```bash
-vercel --prod
-```
+## Vercel env
+Set di Vercel Project Settings -> Environment Variables:
+- `RAPIDAPI_KEY`
+- `RAPIDAPI_HOST`
+- `RAPIDAPI_PATH` (opsional, default `/`)
 
 ## Routes
-- `GET /` landing page
-- `GET /docs` docs JSON
-- `POST /api/tiktok`
-
-Body:
-```json
-{ "url": "https://vt.tiktok.com/xxxx" }
-```
-
-Catatan: shortlink TikTok akan dicoba di-resolve dulu sebelum call oEmbed.
+- `GET /`
+- `GET /docs`
+- `POST /api/tiktok` body `{ "url": "https://vt.tiktok.com/xxxx" }`
