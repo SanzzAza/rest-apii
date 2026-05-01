@@ -1,0 +1,13 @@
+{
+  "name": "rest-apii",
+  "version": "1.0.0",
+  "description": "Simple REST API starter inspired by shenirapi-style endpoint catalog",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["rest-api", "nodejs"],
+  "author": "",
+  "license": "MIT"
+}
